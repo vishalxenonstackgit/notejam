@@ -17,30 +17,29 @@ router.get('/', helpers.loginRequired, async (req, res) => {
     );
     const notes = result.rows;
 
-    async.map(
-      notes,
-      async (note, cb) => {
+    // Use Promise.all to process all notes concurrently
+    const processedNotes = await Promise.all(
+      notes.map(async (note) => {
         const padResult = await pool.query(
           'SELECT * FROM pads WHERE id = $1',
           [note.pad_id]
         );
-        note.pad = padResult.rows[0];
-        cb(null, note);
-      },
-      (err, results) => {
-        if (err) {
-          throw err;
-        }
-        res.render('notes/list', {
-          title: `All notes (${results.length})`,
-          notes: results,
-        });
-      }
+        note.pad = padResult.rows[0]; // Attach the pad data to the note
+        return note; // Return the enriched note
+      })
     );
+
+    // Render the template with the processed notes
+    res.render('notes/list', {
+      title: `All notes (${processedNotes.length})`,
+      notes: processedNotes,
+    });
   } catch (err) {
+    console.error('Error fetching notes:', err); // Log the error for debugging
     res.status(500).send('Error fetching notes');
   }
 });
+
 
 // Create new note
 router.get('/notes/create', helpers.loginRequired, (req, res) => {
@@ -50,6 +49,7 @@ router.get('/notes/create', helpers.loginRequired, (req, res) => {
 router.post('/notes/create', helpers.loginRequired, async (req, res) => {
   const data = req.body;
   data.user_id = req.user.id;
+  console.log(data)
 
   try {
     await pool.query(

@@ -1,7 +1,9 @@
 const { Pool } = require('pg');
-const settings = require('../settings');
+const settings = require('./settings');
 const pool = new Pool(settings);// This is the pool initialized using the `settings.js` file
 const moment = require('moment');
+const bcrypt = require('bcrypt');
+
 
 // Users Model
 const User = {
@@ -11,12 +13,16 @@ const User = {
       [email, password]
     );
   },
-  findById: async (id) => {
-    const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
-    return result.rows[0];
-  },
   findByEmail: async (email) => {
     const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    return result.rows[0];
+  },
+  validatePassword: async (password, hashedPassword) => {
+    // Compare the plaintext password with the hashed password from the database
+    return bcrypt.compare(password, hashedPassword);
+  },
+  findById: async (id) => {
+    const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
     return result.rows[0];
   },
 };
@@ -29,11 +35,8 @@ const Pad = {
       [name, user_id]
     );
   },
-  findById: async (id, user_id) => {
-    const result = await pool.query(
-      'SELECT * FROM pads WHERE id = $1 AND user_id = $2',
-      [id, user_id]
-    );
+  findById: async (userId) => {
+    const result = await pool.query('SELECT * FROM pads WHERE user_id = $1', [userId]);
     return result.rows[0];
   },
   deleteById: async (id) => {
@@ -54,7 +57,16 @@ const Note = {
       'SELECT * FROM notes WHERE id = $1 AND user_id = $2',
       [id, user_id]
     );
-    return result.rows[0];
+
+    // Add the updatedAt method to the note
+    const note = result.rows[0];
+    if (note) {
+      note.updatedAt = function () {
+        return moment(this.updated_at).fromNow(); // Format the updated_at field
+      };
+    }
+
+    return note; // Return the note with the updatedAt method attached
   },
   updateById: async (id, name, text) => {
     return pool.query(

@@ -4,7 +4,7 @@ block content_area
   .three.columns
     h4#logo My pads
     nav
-      if pads.length
+      if pads && pads.length
         ul
           each pad in pads
             li

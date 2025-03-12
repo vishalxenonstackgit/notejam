@@ -13,7 +13,7 @@ block content
     +error('text', errors)
     label(for='pad_id') Pad
     select(name='pad_id')
-      option --------------
-      each pad in req.user.pads
-        option(value=pad.id, selected=pad.id == padId) #{pad.name}
+      if req.user.pads && req.user.pads.length
+        each pad in req.user.pads
+          option(value=pad.id, selected=pad.id == padId) #{pad.name}
     input(type='submit', value='Save')

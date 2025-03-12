@@ -11,7 +11,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const users = require('./routes/users');
 const pads = require('./routes/pads');
 const notes = require('./routes/notes');
-const settings = require('./settings'); // Database connection settings
 const { User, Pad } = require('./models'); // Import User and Pad models
 
 const app = express();
@@ -29,7 +28,7 @@ app.use(session({
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 60000 * 5 }
 }));
 app.use(flash());
 app.use(passport.initialize());
@@ -83,7 +82,7 @@ app.use(async (req, res, next) => {
 
   if (req.isAuthenticated()) {
     try {
-      const pads = await Pad.findByUserId(req.user.id); // Fetch user-specific pads
+      const pads = await Pad.findById(req.user.id); // Fetch user-specific pads
       res.locals.pads = pads;
       next();
     } catch (err) {
@@ -107,15 +106,15 @@ app.use((req, res, next) => {
 });
 
 // Development error handler
-if (app.get('env') === 'development') {
-  app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err,
-    });
-  });
-}
+// if (app.get('env') === 'development') {
+//   app.use((err, req, res, next) => {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//       message: err.message,
+//       error: err,
+//     });
+//   });
+// }
 
 // Production error handler
 app.use((err, req, res, next) => {
