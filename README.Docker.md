@@ -1,3 +1,11 @@
+Update on AG-UI POC:
+As Gemini was not working properly with the copilotkit runtime library in the backend,
+So today we implemented the ag-ui poc backend with the ag-ui protocol connected through websocket with Gemini model that will emit ag-ui events to the frontend. 
+Implemented Web Socket in AG-UI POC
+Also we created a proxy server in the frontend that will convert the normal websocket requests into GraphQL requests as Copilotkit platform only supports graphQL queries. 
+Currently we are able to chat with the model.
+
+
 ### Building and running your application
 
 When you're ready, start your application by running:
