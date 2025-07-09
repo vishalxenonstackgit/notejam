@@ -1,4 +1,6 @@
-Researched about the blog topic "Driving Business Value with GenAI: A Strategic Adoption Playbook"
+AG-UI:-
+Updated the Home page UI of AG-UI.
+
 
 
 ### Building and running your application
