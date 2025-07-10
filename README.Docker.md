@@ -1,5 +1,4 @@
-AG-UI:-
-Updated the Home page UI of AG-UI.
+Created the Spaces page for Agentic Akira AI
 
 
 
