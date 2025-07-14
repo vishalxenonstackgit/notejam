@@ -1,4 +1,13 @@
-Created the Spaces page for Agentic Akira AI
+Update:
+
+Added images in a blog and submitted it.
+
+Update on Agentic Akira AI:
+Fixed the backend integration with frontend.
+Created a modal for account details button.
+Created a modal for creating a new space and integrated api for the same.
+Added a dropdown for model selection in chat-input.
+
 
 
 
