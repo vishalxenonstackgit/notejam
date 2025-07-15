@@ -1,13 +1,9 @@
 Update:
 
-Added images in a blog and submitted it.
+Added responsiveness in the Spaces page.
+Fixed the scrolling behaviour in the spaces list inside sidebar.
 
-Update on Agentic Akira AI:
-Fixed the backend integration with frontend.
-Created a modal for account details button.
-Created a modal for creating a new space and integrated api for the same.
-Added a dropdown for model selection in chat-input.
-
+Fixed the App Sidebar for mobie view also.
 
 
 
