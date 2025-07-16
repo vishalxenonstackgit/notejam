@@ -1,9 +1,11 @@
 Update:
+Created login flow with apis integrated.
 
-Added responsiveness in the Spaces page.
-Fixed the scrolling behaviour in the spaces list inside sidebar.
+UI enhancements in the following:
+Main chat page 
+Sidebar 
+Create new Space 
 
-Fixed the App Sidebar for mobie view also.
 
 
 
