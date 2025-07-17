@@ -1,10 +1,6 @@
 Update:
-Created login flow with apis integrated.
-
-UI enhancements in the following:
-Main chat page 
-Sidebar 
-Create new Space 
+Created a new page for creating new space.
+Integrated API for creating and deleting sesions with proper flow.
 
 
 
