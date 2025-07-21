@@ -1,6 +1,8 @@
 Update:
-Created a new page for creating new space.
-Integrated API for creating and deleting sesions with proper flow.
+Gone through the codebase of agent-scrum-ui.
+Developed some components from figma in agent-scrum-ui for admin dashboard page.
+Fixed the Markdown styles for xenonstack-akira-ai using github markdown.
+Updated the accounts popup page.
 
 
 
