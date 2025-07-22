@@ -1,11 +1,8 @@
-Update:
-Gone through the codebase of agent-scrum-ui.
-Developed some components from figma in agent-scrum-ui for admin dashboard page.
-Fixed the Markdown styles for xenonstack-akira-ai using github markdown.
-Updated the accounts popup page.
+Study about these blog topic:-
+1) Building Audit-Ready AI Infrastructure: A Compliance Officer’s Checklist
+2) The Strategic Return of On-Prem AI: Cost, Control, and Customization
 
-
-
+Gone through the wireframe doc of agent scrum ui
 
 ### Building and running your application
 
