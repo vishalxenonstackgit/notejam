@@ -1,6 +1,5 @@
-Study about these blog topic:-
-1) Building Audit-Ready AI Infrastructure: A Compliance Officer’s Checklist
-2) The Strategic Return of On-Prem AI: Cost, Control, and Customization
+Refinement work in logs tables.
+Updated the prototype for newly added features.
 
 Gone through the wireframe doc of agent scrum ui
 
